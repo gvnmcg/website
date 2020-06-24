@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import  WorkExperience  from "./WorkExperience";
 
 const App = () => (
   <div className="App">

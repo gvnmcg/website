@@ -1,7 +1,9 @@
-export const WorkExperience = 'WorkExperience';
+import React from 'react';
 
-export const WorkExperience = () => (
+const WorkExperience = () => (
     <div>
-        
+
     </div>
 )
+
+export default WorkExperience;
