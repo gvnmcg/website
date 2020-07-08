@@ -11,7 +11,9 @@ class MDComponent extends Component {
 
   componentWillMount() {
     // Get the contents from the Markdown file and put them in the React state, so we can reference it in render() below.
-    fetch(AppMarkdown).then(res => res.text()).then(text => this.setState({ markdown: text }));
+    fetch(AppMarkdown)
+    .then(res => res.text())
+    .then(text => this.setState({ markdown: text }));
   }
 
   render() {

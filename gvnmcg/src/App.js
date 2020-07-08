@@ -5,7 +5,6 @@ import MDComponent from "./MDComponent"
 
 const App = () => (
   <div className="App">
-
     <MDComponent/>
   </div>
 );
