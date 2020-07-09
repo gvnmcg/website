@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import MDComponent from "./MDComponent";
 import Playlists from "./Playlists";
+import sigimg from "./gavin-belson-signature.png"
 
 const App = () => (
   <div className="App">
+
+    <img alt="sig" src={sigimg}/>
     <h1>Gavin McGuire</h1>
 
     <Router>

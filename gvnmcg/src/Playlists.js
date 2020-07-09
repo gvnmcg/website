@@ -2,17 +2,17 @@ import React from 'react';
 
 const Playlists = () => (
     <div>
-        <label>2020</label>
+        <h3>2020</h3>
         
         <iframe src="https://open.spotify.com/embed/playlist/6rwpproOh59djscbkwdqq0" 
-        width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"
+        width="700" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"
         title="2020"></iframe>
         
         
-        <label>Guitar inspo</label>
+        <h3>Guitar inspo</h3>
         
         <iframe src="https://open.spotify.com/embed/playlist/7G9Ortc7nyvGGjvawMNmmI" 
-        width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"
+        width="700" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"
         title="Guitar inspo"></iframe>
     </div>
 )
