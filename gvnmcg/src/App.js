@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./App.css";
-import MDComponent from "./MDComponent";
-import Playlists from "./Playlists";
+import "./style/App.css";
+import MDComponent from "./components/MDComponent";
+import Playlists from "./components/Playlists";
 
 const App = () => (
   <div className="App">
