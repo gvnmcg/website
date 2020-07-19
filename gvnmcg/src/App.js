@@ -1,12 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "./style/App.css";
+
 import MDComponent from "./components/MDComponent";
 import Playlists from "./components/Playlists";
+import Art from "./components/Art";
+import "./style/App.css";
+
+
 
 const App = () => (
   <div className="App">
-
     <div className="header">
       <h1>Gavin McGuire</h1>
     </div>
@@ -17,7 +20,7 @@ const App = () => (
         <Link to="/resume"> Resume </Link>
         <Link to="/playlists"> Playlists</Link>
         <Link to="/styles"> Styles</Link>
-        <Link to="/demos"> Demos</Link>
+        <Link to="/art"> Art</Link>
       </div>
 
       <div className="links">
@@ -28,21 +31,23 @@ const App = () => (
 
       <div className="content">
         <Switch>
-          <Route path="/playlists">
-            <div></div>
-          </Route>
-          <Route path="/playlists">
-            <Playlists />
-          </Route>
+        
           <Route path="/resume">
             <MDComponent />
           </Route>
-          <Route path="/resume">
-            <p>In progreess</p>
+
+          <Route path="/playlists">
+            <Playlists />
           </Route>
-          <Route path="/resume">
-            <p>In progreess</p>
+
+          <Route path="/styles">
+            <p>In progress</p>
           </Route>
+
+          <Route path="/art">
+            <Art />
+          </Route>
+
         </Switch>
       </div>
     </Router>
