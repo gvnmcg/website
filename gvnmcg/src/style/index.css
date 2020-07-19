@@ -3,7 +3,10 @@ body {
   background-color: #71EEB8;
   
   background-size: 100%;
-  background-image: url(colored-snow.jpg);
+  background-image: url(volcanic.jpg);
+  background-attachment: fixed;
+  
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

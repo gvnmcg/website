@@ -7,31 +7,44 @@ import Playlists from "./components/Playlists";
 const App = () => (
   <div className="App">
 
-    <h1>Gavin McGuire</h1>
+    <div className="header">
+      <h1>Gavin McGuire</h1>
+    </div>
 
     <Router>
-      <ul>
-        <li>
-          <Link to="/resume"> Resume </Link>
-        </li>
+      <div className="navigator">
+        <Link to="/"> Home </Link>
+        <Link to="/resume"> Resume </Link>
+        <Link to="/playlists"> Playlists</Link>
+        <Link to="/styles"> Styles</Link>
+        <Link to="/demos"> Demos</Link>
+      </div>
 
-        <li>
-          <Link to="/playlists"> Playlists</Link>
-        </li>
-      </ul>
+      <div className="links">
+        <a href="https://github.com/gvnmcg">github.com/gvnmcg</a>
+        <br />
+        <a href="mailto:gvnmcg517@gmail.com">mailto:gvnmcg517@gmail.com</a>
+      </div>
 
-      <a href="mailto:gvnmcg517@gmail.com">gvnmcg517@gmail.com</a>
-      <br />
-      <a href="https://github.com/gvnmcg">github.com/gvnmcg</a>
-
-      <Switch>
-        <Route path="/playlists">
-          <Playlists />
-        </Route>
-        <Route path="/resume">
-          <MDComponent />
-        </Route>
-      </Switch>
+      <div className="content">
+        <Switch>
+          <Route path="/playlists">
+            <div></div>
+          </Route>
+          <Route path="/playlists">
+            <Playlists />
+          </Route>
+          <Route path="/resume">
+            <MDComponent />
+          </Route>
+          <Route path="/resume">
+            <p>In progreess</p>
+          </Route>
+          <Route path="/resume">
+            <p>In progreess</p>
+          </Route>
+        </Switch>
+      </div>
     </Router>
   </div>
 );

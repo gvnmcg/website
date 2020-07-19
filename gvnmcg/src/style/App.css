@@ -1,7 +1,46 @@
 .App {
   text-align: left;
-  margin: 2in;
-  background-color: white;
-  opacity: 075;
+  margin: 10%;
+  background-attachment: fixed;
+/*   
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; */
 }
 
+iframe {
+  width: 100%;
+  height: 380px;
+  frameborder: 0;
+  allowtransparency: true;
+  allow: "encrypted-media";
+}
+
+.header {
+  text-align: center;
+}
+
+.navigator {
+  
+  background-color: white;
+  opacity: 0.75;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.links{
+  margin-top: 10px;
+  background-color: white;
+  opacity: 0.75;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.content {
+  background-color: white;
+  opacity: 0.75;
+}
