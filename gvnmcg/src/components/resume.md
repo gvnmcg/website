@@ -1,15 +1,14 @@
 
 Education
 ----------
-- Bachelor of Computer Science, University of New Mexico
-- Graduation date (expected):  December 2020
-- major in Computer Science 
-- minor in Math	
+- Bachelor of Computer Science (minor in Mathematics)
+- University of New Mexico
+    - Graduation date (expected):  December 2020
 
 Work Experience
 ---------------
 - **Frontend Engineer Team Intern**- Xpansiv 
-    - June 2019 - January 2020 (6 months)
+    - June 2019 - January 2020
     -  Collaborated with Team to design and write a front-end web application using Typescript, React, Redux, and Jest.
     - Wrote HTML Email templates for a project already released and being maintained.
     - Collaborated with backend Engineers to make server endpoints to send and receive JSON files.

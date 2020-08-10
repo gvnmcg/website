@@ -1,25 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppMarkdown from './resume.md';
 import ReactMarkdown from 'react-markdown';
 
-class MDComponent extends Component {
+const MDComponent = () => {
 
-  constructor() {
-    super();
-    this.state = { markdown: '' };
-  }
+  const [markdown, setMarkdown] = useState('');
 
-  componentWillMount() {
-    // Get the contents from the Markdown file and put them in the React state, so we can reference it in render() below.
+  useEffect(() => {
     fetch(AppMarkdown)
     .then(res => res.text())
-    .then(text => this.setState({ markdown: text }));
-  }
+    .then(text => setMarkdown(text));
+  }, [])
 
-  render() {
-    const { markdown } = this.state;
-    return <ReactMarkdown source={markdown} />;
-  }
+  return <ReactMarkdown source={markdown} />; 
 }
 
 export default MDComponent;

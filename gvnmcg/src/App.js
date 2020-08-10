@@ -6,11 +6,10 @@ import Playlists from "./components/Playlists";
 import Art from "./components/Art";
 import "./style/App.css";
 
-
-
 const App = () => (
   <div className="App">
     <div className="header">
+      <img src={require("./style/bear.png")} alt="logo" width="50px"/>
       <h1>Gavin McGuire</h1>
     </div>
 
@@ -20,7 +19,6 @@ const App = () => (
         <Link to="/resume"> Resume </Link>
         <Link to="/playlists"> Playlists</Link>
         <Link to="/styles"> Styles</Link>
-        <Link to="/art"> Art</Link>
       </div>
 
       <div className="links">
@@ -42,10 +40,6 @@ const App = () => (
 
           <Route path="/styles">
             <p>In progress</p>
-          </Route>
-
-          <Route path="/art">
-            <Art />
           </Route>
 
         </Switch>
