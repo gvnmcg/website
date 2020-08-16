@@ -3,13 +3,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import MDComponent from "./components/MDComponent";
 import Playlists from "./components/Playlists";
-import Art from "./components/Art";
 import "./style/App.css";
 
 const App = () => (
   <div className="App">
     <div className="header">
-      <img src={require("./style/bear.png")} alt="logo" width="50px"/>
+      {/* <img src={require("./style/bear.png")} alt="logo" width="50px"/> */}
       <h1>Gavin McGuire</h1>
     </div>
 
