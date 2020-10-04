@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import CBTApp from "./CBTApp";
 
 import MDComponent from "./components/MDComponent";
 import Playlists from "./components/Playlists";
+import CBTApp from "./CBTApp";
+import TabApp from "./TabApp";
 import "./style/App.css";
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
         <Link to="/resume"> Resume </Link>
         <Link to="/playlists"> Playlists</Link>
         <Link to="/cbt"> CBT</Link>
+        <Link to="/tab"> Guitar Tabs</Link>
         <Link to="/styles"> Styles</Link>
       </div>
 
@@ -40,6 +42,10 @@ const App = () => (
 
           <Route path="/cbt">
             <CBTApp />
+          </Route>
+
+          <Route path="/tab">
+            <TabApp />
           </Route>
 
           <Route path="/styles">
