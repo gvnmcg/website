@@ -1,16 +1,15 @@
 import React from "react";
 import { Switch, Route, Link, HashRouter } from "react-router-dom";
 
-import MDComponent from "./components/MDComponent./MDComponent";
+import MDComponent from "./components/MDComponent/MDComponent";
 import Playlists from "./components/Playlists/Playlists";
 import CBTApp from "./components/CBTApp/CBTApp";
-import TabApp from "./TabApp";
+import TabApp from "./components/TabApp/TabApp";
 import "./style/App.css";
 
 const App = () => (
   <div className="App">
     <div className="header">
-      {/* <img src={require("./style/bear.png")} alt="logo" width="50px"/> */}
       <h1>Gavin McGuire</h1>
     </div>
 
@@ -36,7 +35,6 @@ const App = () => (
           <Route path="/playlists" component={Playlists} />
           <Route path="/cbt" component={CBTApp} />
           <Route path="/tab" component={TabApp} />
-          <Route path="/styles" component={() => <p>in progress</p>} />
         </Switch>
       </div>
     </HashRouter>

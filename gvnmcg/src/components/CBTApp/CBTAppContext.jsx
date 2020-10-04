@@ -15,6 +15,12 @@ let cbtBlank = {
   resolve: "",
 };
 
+// {
+//   cbtBlank
+//   cbtBlank.keys().map(key => cbtBlank[key])
+
+// }
+
 let cbtExampleLs = [cbtBlank, cbtExampleObj, cbtExampleObj];
 
 /**
@@ -26,17 +32,17 @@ let cbtExampleLs = [cbtBlank, cbtExampleObj, cbtExampleObj];
  * - Saves input into new CBT event.
  */
 const CBTApp = () => {
-  const [cbtLs, setCBTLs] = React.useState(cbtExampleLs);
+  // const [cbtLs, setCBTLs] = React.useState(cbtExampleLs);
 
-  //add new CBT to list (state)
-  const addCBT = (newCBT) => {
-    setCBTLs([newCBT, ...cbtLs]);
-  };
+  // //add new CBT to list (state)
+  // const addCBT = (newCBT) => {
+  //   setCBTLs([newCBT, ...cbtLs]);
+  // };
 
   return (
     <div className="CBTApp">
-      <DisplayCBTTable ls={cbtLs} />
-      <DisplayCBTControls handlePost={addCBT} />
+      <DisplayCBTTable />
+      <DisplayCBTControls />
     </div>
   );
 };
