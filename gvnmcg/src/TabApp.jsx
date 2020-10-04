@@ -49,4 +49,10 @@ const TabApp = () => {
   return <div className="TabApp">{state.strs.map((n) => tunerRow(n))}</div>;
 };
 
+const strString = (n) => {
+  let rep = "";
+
+  return rep;
+};
+
 export default TabApp;

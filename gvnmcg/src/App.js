@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, HashRouter } from "react-router-dom";
 
 import MDComponent from "./components/MDComponent";
 import Playlists from "./components/Playlists";
 import CBTApp from "./CBTApp";
-import TabApp from "./TabApp";
 import "./style/App.css";
 
 const App = () => (
@@ -14,7 +13,7 @@ const App = () => (
       <h1>Gavin McGuire</h1>
     </div>
 
-    <Router>
+    <HashRouter>
       <div className="navigator">
         <Link to="/"> Home </Link>
         <Link to="/resume"> Resume </Link>
@@ -32,28 +31,13 @@ const App = () => (
 
       <div className="content">
         <Switch>
-          <Route path="/resume">
-            <MDComponent />
-          </Route>
-
-          <Route path="/playlists">
-            <Playlists />
-          </Route>
-
-          <Route path="/cbt">
-            <CBTApp />
-          </Route>
-
-          <Route path="/tab">
-            <TabApp />
-          </Route>
-
-          <Route path="/styles">
-            <p>In progress</p>
-          </Route>
+          <Route path="/resume" component={MDComponent} />
+          <Route path="/playlists" component={Playlists} />
+          <Route path="/cbt" component={CBTApp} />
+          <Route path="/styles" component={<p>In progress</p>} />
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   </div>
 );
 
