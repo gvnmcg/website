@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  HashRouter,
+} from "react-router-dom";
 import CBTApp from "./CBTApp";
 
 import MDComponent from "./components/MDComponent";
@@ -13,7 +19,7 @@ const App = () => (
       <h1>Gavin McGuire</h1>
     </div>
 
-    <Router>
+    <HashRouter>
       <div className="navigator">
         <Link to="/"> Home </Link>
         <Link to="/resume"> Resume </Link>
@@ -36,7 +42,7 @@ const App = () => (
           <Route path="/styles" component={<p>In progress</p>} />
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   </div>
 );
 
