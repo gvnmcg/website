@@ -30,21 +30,10 @@ const App = () => (
 
       <div className="content">
         <Switch>
-          <Route path="/resume">
-            <MDComponent />
-          </Route>
-
-          <Route path="/playlists">
-            <Playlists />
-          </Route>
-
-          <Route path="/cbt">
-            <CBTApp />
-          </Route>
-
-          <Route path="/styles">
-            <p>In progress</p>
-          </Route>
+          <Route path="/resume" component={MDComponent} />
+          <Route path="/playlists" component={Playlists} />
+          <Route path="/cbt" component={CBTApp} />
+          <Route path="/styles" component={<p>In progress</p>} />
         </Switch>
       </div>
     </Router>
