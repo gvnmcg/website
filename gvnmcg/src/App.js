@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import CBTApp from "./CBTApp";
 
 import MDComponent from "./components/MDComponent";
 import Playlists from "./components/Playlists";
@@ -17,6 +18,7 @@ const App = () => (
         <Link to="/"> Home </Link>
         <Link to="/resume"> Resume </Link>
         <Link to="/playlists"> Playlists</Link>
+        <Link to="/cbt"> CBT</Link>
         <Link to="/styles"> Styles</Link>
       </div>
 
@@ -28,7 +30,6 @@ const App = () => (
 
       <div className="content">
         <Switch>
-        
           <Route path="/resume">
             <MDComponent />
           </Route>
@@ -37,10 +38,13 @@ const App = () => (
             <Playlists />
           </Route>
 
+          <Route path="/cbt">
+            <CBTApp />
+          </Route>
+
           <Route path="/styles">
             <p>In progress</p>
           </Route>
-
         </Switch>
       </div>
     </Router>
