@@ -30,6 +30,8 @@ const CBTApp = () => {
   const [cbtLs, setCBTLs] = React.useState(cbtExampleLs);
 
   const addCBT = (newCBT) => {
+    if (newCBT) {
+    }
     setCBTLs([newCBT, ...cbtLs]);
   };
 
