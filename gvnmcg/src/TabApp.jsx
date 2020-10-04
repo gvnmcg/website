@@ -42,6 +42,7 @@ const TabApp = () => {
         <button onClick={() => tune(1)}>+</button>
         <span>{state.tuning[strN]}</span>
         <button onClick={() => tune(-1)}>-</button>
+        <span>{strString(strN)}</span>
       </div>
     );
   };
@@ -51,6 +52,11 @@ const TabApp = () => {
 
 const strString = (n) => {
   let rep = "";
+
+  for (let i = 0; i < 15; i++) {
+    rep += " -|- ";
+    rep += notes[(n + i) % 12];
+  }
 
   return rep;
 };

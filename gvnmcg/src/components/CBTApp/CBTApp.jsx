@@ -1,5 +1,5 @@
 import React from "react";
-import "./style/CBT.css";
+import "./CBT.css";
 
 let cbtExampleObj = {
   event: "bday",
