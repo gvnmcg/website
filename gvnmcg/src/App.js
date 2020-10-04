@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  HashRouter,
-} from "react-router-dom";
+import { Switch, Route, Link, HashRouter } from "react-router-dom";
 import CBTApp from "./CBTApp";
 
 import MDComponent from "./components/MDComponent";
