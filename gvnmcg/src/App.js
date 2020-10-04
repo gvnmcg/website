@@ -36,7 +36,7 @@ const App = () => (
           <Route path="/playlists" component={Playlists} />
           <Route path="/cbt" component={CBTApp} />
           <Route path="/tab" component={TabApp} />
-          <Route path="/styles" component={<p>In progress</p>} />
+          <Route path="/styles" component={() => <p>in progress</p>} />
         </Switch>
       </div>
     </HashRouter>

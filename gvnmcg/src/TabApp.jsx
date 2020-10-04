@@ -1,19 +1,19 @@
 import React from "react";
 
-const noteAccidentals = [
-  "C",
-  "C#/Db",
-  "D",
-  "D#/Eb",
-  "E",
-  "F",
-  "F#/Gb",
-  "G",
-  "G#/Ab",
-  "A",
-  "A#/Bb",
-  "B",
-];
+// const noteAccidentals = [
+//   "C",
+//   "C#/Db",
+//   "D",
+//   "D#/Eb",
+//   "E",
+//   "F",
+//   "F#/Gb",
+//   "G",
+//   "G#/Ab",
+//   "A",
+//   "A#/Bb",
+//   "B",
+// ];
 
 const notes = ["C", "_", "D", "_", "E", "F", "_", "G", "_", "A", "_", "B"];
 
@@ -23,7 +23,7 @@ const initState = {
   strs: [0, 1, 2, 3, 4, 5],
 };
 
-const iota = (n) => [...Array(n).keys()];
+// const iota = (n) => [...Array(n).keys()];
 
 const TabApp = () => {
   const [state, setState] = React.useState(initState);
