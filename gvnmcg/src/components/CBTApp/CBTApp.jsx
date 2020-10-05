@@ -117,7 +117,7 @@ const DisplayCBTControls = ({ handlePost }) => {
           setValue(cbtBlank);
         }}
       >
-        post it
+        ^^^
       </button>
     </div>
   );
