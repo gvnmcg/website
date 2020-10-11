@@ -5,6 +5,7 @@ import MDComponent from "./components/MDComponent/MDComponent";
 import Playlists from "./components/Playlists/Playlists";
 import CBTApp from "./components/CBTApp/CBTApp";
 import TabApp from "./components/TabApp/TabApp";
+import FretboardApp from "./components/TabApp/Fretbaoard";
 import "./style/App.css";
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
         <Link to="/playlists"> Playlists</Link>
         <Link to="/cbt"> CBT</Link>
         <Link to="/tab"> Guitar Tabs</Link>
+        <Link to="/fb"> Fretbaoard</Link>
         <Link to="/styles"> Styles</Link>
       </div>
 
@@ -35,6 +37,7 @@ const App = () => (
           <Route path="/playlists" component={Playlists} />
           <Route path="/cbt" component={CBTApp} />
           <Route path="/tab" component={TabApp} />
+          <Route path="/fb" component={FretboardApp} />
         </Switch>
       </div>
     </HashRouter>
