@@ -51,7 +51,8 @@ import "./TabApp.css";
 
 const fbState = {
   tuning: [16, 23, 31, 38, 45, 52],
-  scale: [0, 2, 4, 5, 7, 9, 11],
+  scale: [true, true, true, true, true, true, true ]
+  // scale: [false, false, false, false, false, false, false ]
 };
 // const iota = (n) => [...Array(n).keys()];
 
@@ -66,47 +67,61 @@ const FretboardApp = () => {
   const [state, setState] = React.useState(fbState);
 
   const setScale = (newScale) => {
-    console.log("setScale(", newScale ,")")
     setState({ ...state, scale: newScale });
   };
 
   const setTuning = (newtuning) => {
-    setState({...state , tuning: newtuning });
-  
+    setState({ ...state, tuning: newtuning });
   };
 
   return (
     <div className="TabApp" style={{ padding: "30px" }}>
-      <KeyControls setScale={setScale} />
 
-      <TuningContols tuning={state.tuning} setTuning={setTuning} />
+      <div style={{ padding: "30px" }}>
+        <KeyControls scale={state.scale} setScale={setScale} />
+      </div>
 
-      <DisplayGuitarStrings tuning={state.tuning} scale={state.scale} />
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <TuningContols tuning={state.tuning} setTuning={setTuning} />
+        <DisplayGuitarStrings tuning={state.tuning} scale={state.scale} />
+      </div>
+
     </div>
   );
 };
 
-const KeyControls = ({ setScale }) => {
+const KeyControls = ({ scale, setScale }) => {
   let inp = "";
 
+  
+  const toggleScaleNumber = (scaleNumber, b) => {
+    let newScale = scale;
+    newScale[scaleNumber] = !newScale[scaleNumber];
+    setScale(newScale);
+  };
+
   return (
-    <div>
-      <input
-        onChange={(e) => {
-          inp = e.target.innerText;
-        }}
-      ></input>
-      <button onClick={() => setScale(inp)}></button>
+    <div style={{ display: "flex", flexDirection: "row" }}>
+
+      {scaleNotes.map( (ch, i) => (
+        <div>
+          {ch}
+          <br/>
+          {i+1}
+          <input type="checkbox" checked={scale[i]} onChange={(e)=> {
+              toggleScaleNumber(i)
+          }}/>
+        </div>
+      ))}
+      
     </div>
   );
 };
 
 /**
- * purpose - create set of strings.
+ * purpose - create controls to tune guitar representation
  */
 const TuningContols = ({ tuning, setTuning }) => {
-
-
 
   const onAnyChange = (strNum, turnDir) => {
     let newTuning = tuning;
@@ -116,21 +131,24 @@ const TuningContols = ({ tuning, setTuning }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
+
+      {tuning.map((t, n) => (
+        <div key={n}>
+          <button onClick={() => onAnyChange(n, 1)}>+</button>
+          <span>{t}</span>
+          <button onClick={() => onAnyChange(n, -1)}>-</button>
+        </div>
+      ))}
+
       <button
         onClick={() => {
+          //standard tuning
           setTuning([16, 23, 31, 38, 45, 52]);
         }}
       >
         Std Tuning
       </button>
 
-      {tuning.map((t, n) => (
-          <div key={n}>
-            <button onClick={() => onAnyChange(n, 1)}>+</button>
-            <span>{t}</span>
-            <button onClick={() => onAnyChange(n, -1)}>-</button>
-          </div>
-        ))}
     </div>
   );
 };
@@ -144,11 +162,10 @@ const TuningContols = ({ tuning, setTuning }) => {
  * -  display representation
  *
  */
-const DisplayGuitarStrings = ({ tuning , scale}) => {
-  
+const DisplayGuitarStrings = ({ tuning, scale }) => {
   return (
-    <div>
-      {fre}
+    <div style={{ alignItems: "center", font: "monospaced" }}>
+      {fretMarkers}
       {tuning.map((t, n) => (
         <div key={n}>{strString(tuning[n], scale)}</div>
       ))}
@@ -159,13 +176,14 @@ const DisplayGuitarStrings = ({ tuning , scale}) => {
 // const notes = ["C", "-", "D", "-", "E", "F", "-", "G", "-", "A", "-", "B"];
 const notes = ["1", "-", "2", "-", "3", "4", "-", "5", "-", "6", "-", "7"];
 
-// const scaleNotes = ["C", "D", "E", "F", "G", "A", "B"];
-const scaleNumbers = [0, 0, 1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7 ]
+const scaleNotes = ["C", "D", "E", "F", "G", "A", "B"];
+const scaleNumbers = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 1];
 
 // const notestring  = "-|-C-|---|-D-|---|-E-|-F-|---|-G-|---|-A-|---|-B-";
 // const notestring  = "-|-1-|---|-2-|---|-3-|-4-|---|-5-|---|-6-|---|-7-";
-// const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
-const fretMarkers = "-|---|---|-o-|---|-o-|---|-o-|---|-o-|---|---|-%-";
+
+const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
+const fretMarkers = "           .       .       .       .           : ";
 
 /**
  * represent string
@@ -173,11 +191,22 @@ const fretMarkers = "-|---|---|-o-|---|-o-|---|-o-|---|-o-|---|---|-%-";
  * @param {midi number rep} note
  */
 const strString = (note, scale) => {
-  let rep = "";
+  ////////
 
-  for (let i = 0; i < 12; i++) {
+  //build string rep
+  let rep = "";
+  
+  for (let i = 0; i < 12; i++) {  
     rep += "-|-";
-    rep += notes[(note + i) % 12];
+
+    let fromOpen = (note + i) % 12;
+
+    //if scale contains true the include Note rep else '-'
+    if (scale[scaleNumbers[fromOpen] - 1]){
+      rep += notes[fromOpen];
+    } else {
+      rep += "-"
+    }
   }
 
   return rep;
