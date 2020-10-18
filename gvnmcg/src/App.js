@@ -21,7 +21,7 @@ const App = () => (
         <Link to="/playlists"> Playlists</Link>
         <Link to="/cbt"> CBT</Link>
         <Link to="/tab"> Guitar Tabs</Link>
-        <Link to="/fb"> Fretbaoard</Link>
+        <Link to="/fb"> Fretboard</Link>
         <Link to="/styles"> Styles</Link>
       </div>
 
