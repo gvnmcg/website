@@ -49,10 +49,13 @@ import "./TabApp.css";
 //   songKeyState: songKeyState,
 // };
 
+const allFalse = [false, false, false, false, false, false, false ]
+const allTrue = [true, true, true, true, true, true, true ]
+
 const fbState = {
   tuning: [16, 23, 31, 38, 45, 52],
-  scale: [true, true, true, true, true, true, true ]
-  // scale: [false, false, false, false, false, false, false ]
+  scale: allTrue
+  // scale: 
 };
 // const iota = (n) => [...Array(n).keys()];
 
@@ -100,6 +103,14 @@ const KeyControls = ({ scale, setScale }) => {
     setScale(newScale);
   };
 
+  const toggleChord = (chordNum) => {
+    let newScale = [false, false, false, false, false, false, false];
+    newScale[chordNum] = true;
+    newScale[(chordNum + 2) % 7] = true;
+    newScale[(chordNum + 4) % 7] = true;
+    setScale(newScale);
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
 
@@ -111,8 +122,14 @@ const KeyControls = ({ scale, setScale }) => {
           <input type="checkbox" checked={scale[i]} onChange={(e)=> {
               toggleScaleNumber(i)
           }}/>
+
+          <button onClick={()=>{toggleChord(i)}}>{ch}</button>
+
+
         </div>
       ))}
+
+      <button onClick={()=>{setScale(allTrue);}}>all</button>
       
     </div>
   );
@@ -183,7 +200,7 @@ const scaleNumbers = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 1];
 // const notestring  = "-|-1-|---|-2-|---|-3-|-4-|---|-5-|---|-6-|---|-7-";
 
 const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
-const fretMarkers = "           .       .       .       .           : ";
+const fretMarkers = "-|---|---|-o-|---|-o-|---|-o-|---|-o-|---|---|-%-";
 
 /**
  * represent string
