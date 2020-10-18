@@ -9,22 +9,19 @@ import FretboardApp from "./components/TabApp/Fretbaoard";
 import "./style/App.css";
 
 const App = () => (
-  <div className="App" style={{ display: "flex", flexDirection: "row" }}>
+  <div className="App">
     <HashRouter>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div className="sidebar">
         <div className="header">
           <h1>Gavin McGuire</h1>
         </div>
-        <div
-          className="navigator"
-          style={{ display: "flex", flexDirection: "column" }}
-        >
+        <div className="navigator">
           <Link to="/"> Home </Link>
           <Link to="/resume"> Resume </Link>
           <Link to="/playlists"> Playlists</Link>
           <Link to="/cbt"> CBT</Link>
-          <Link to="/tab"> Guitar Tabs</Link>
-          <Link to="/fb"> Fretboard</Link>
+          <Link to="/tab"> Fretboard ver 1</Link>
+          <Link to="/fb"> Fretboard ver 2</Link>
           <Link to="/styles"> Styles</Link>
         </div>
         <div className="links">
