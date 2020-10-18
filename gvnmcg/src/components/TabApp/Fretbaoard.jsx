@@ -98,7 +98,6 @@ const FretboardApp = () => {
 };
 
 const KeyControls = ({ scale, setScale }) => {
-  let inp = "";
 
   
   const toggleScaleNumber = (scaleNumber, b) => {
@@ -128,7 +127,6 @@ const KeyControls = ({ scale, setScale }) => {
           }}/>
 
           <button onClick={()=>{toggleChord(i)}}>{ch}</button>
-
 
         </div>
       ))}
@@ -226,7 +224,7 @@ const scaleNumbers = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 1];
 // const notestring  = "-|-C-|---|-D-|---|-E-|-F-|---|-G-|---|-A-|---|-B-";
 // const notestring  = "-|-1-|---|-2-|---|-3-|-4-|---|-5-|---|-6-|---|-7-";
 
-const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
+// const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
 const fretMarkers = "-|---|---|-o-|---|-o-|---|-o-|---|-o-|---|---|-%-";
 
 /**
