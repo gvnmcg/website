@@ -244,7 +244,9 @@ const strString = (note, scale) => {
 
     let fromOpen = (note + i) % 12;
 
-    //if scale contains true the include Note rep else '-'
+    //if scale contains true 
+    // then include Note rep 
+    // else '-'
     if (scale[scaleNumbers[fromOpen] - 1]){
       rep += notes[fromOpen];
     } else {

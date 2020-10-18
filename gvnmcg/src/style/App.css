@@ -38,9 +38,9 @@ iframe {
   background-color: white;
   opacity: 0.75;
 
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-around; */
 }
 
 .art{

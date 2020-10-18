@@ -9,26 +9,30 @@ import FretboardApp from "./components/TabApp/Fretbaoard";
 import "./style/App.css";
 
 const App = () => (
-  <div className="App">
-    <div className="header">
-      <h1>Gavin McGuire</h1>
-    </div>
-
+  <div className="App" style={{ display: "flex", flexDirection: "row" }}>
     <HashRouter>
-      <div className="navigator">
-        <Link to="/"> Home </Link>
-        <Link to="/resume"> Resume </Link>
-        <Link to="/playlists"> Playlists</Link>
-        <Link to="/cbt"> CBT</Link>
-        <Link to="/tab"> Guitar Tabs</Link>
-        <Link to="/fb"> Fretboard</Link>
-        <Link to="/styles"> Styles</Link>
-      </div>
-
-      <div className="links">
-        <a href="https://github.com/gvnmcg">github.com/gvnmcg</a>
-        <br />
-        <a href="mailto:gvnmcg517@gmail.com">mailto:gvnmcg517@gmail.com</a>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className="header">
+          <h1>Gavin McGuire</h1>
+        </div>
+        <div
+          className="navigator"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <Link to="/"> Home </Link>
+          <Link to="/resume"> Resume </Link>
+          <Link to="/playlists"> Playlists</Link>
+          <Link to="/cbt"> CBT</Link>
+          <Link to="/tab"> Guitar Tabs</Link>
+          <Link to="/fb"> Fretboard</Link>
+          <Link to="/styles"> Styles</Link>
+        </div>
+        <div className="links">
+          <br />
+          <a href="https://github.com/gvnmcg">github.com/gvnmcg</a>
+          <br />
+          <a href="mailto:gvnmcg517@gmail.com">mailto:gvnmcg517@gmail.com</a>
+        </div>
       </div>
 
       <div className="content">
