@@ -13,6 +13,10 @@ Work Experience
     - Wrote HTML Email templates for a project already released and being maintained.
     - Collaborated with backend Engineers to make server endpoints to send and receive JSON files.
 
+- **misc**
+    - Pizza Cook & Driver
+    - Farmhand
+
 Experience
 ----------
 - **Java** - Planned object oriented design patterns, developed full applications, documented algorithms, designed graphical user interfaces, Organized multi threaded program networks, and Coordinated server socket communication.

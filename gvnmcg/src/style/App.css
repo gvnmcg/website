@@ -10,7 +10,8 @@
 .sidebar{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+
+  margin-right: 10%;
 }
 
 .header {
