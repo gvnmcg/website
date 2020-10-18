@@ -49,6 +49,10 @@ import "./TabApp.css";
 //   songKeyState: songKeyState,
 // };
 
+
+const standardTuning = [16, 23, 31, 38, 45, 52];
+const dadfad = [14, 21, 29, 38, 45, 50]
+
 const allFalse = [false, false, false, false, false, false, false ]
 const allTrue = [true, true, true, true, true, true, true ]
 
@@ -130,12 +134,14 @@ const KeyControls = ({ scale, setScale }) => {
       ))}
 
       <button onClick={()=>{setScale(allTrue);}}>all</button>
+      <button onClick={()=>{setScale(allFalse);}}>nil</button>
       
     </div>
   );
 };
 
 /**
+ * Tuning Contols
  * purpose - create controls to tune guitar representation
  */
 const TuningContols = ({ tuning, setTuning }) => {
@@ -146,24 +152,43 @@ const TuningContols = ({ tuning, setTuning }) => {
     setTuning(newTuning);
   };
 
+  const shiftAll = (turnDir) => {
+    setTuning(tuning.map(t => t + turnDir));
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
 
       {tuning.map((t, n) => (
         <div key={n}>
           <button onClick={() => onAnyChange(n, 1)}>+</button>
-          <span>{t}</span>
+          <span> { t  } </span>
           <button onClick={() => onAnyChange(n, -1)}>-</button>
         </div>
       ))}
 
+      <div>
+        <button onClick={() => shiftAll( 1)}> +</button>
+        <span> all </span>
+        <button onClick={() => shiftAll(-1)}> -</button>
+      </div>
+
       <button
         onClick={() => {
           //standard tuning
-          setTuning([16, 23, 31, 38, 45, 52]);
+          setTuning(standardTuning);
         }}
       >
-        Std Tuning
+        Standard Tuning
+      </button>
+
+      <button
+        onClick={() => {
+          //DADFAD tuning
+          setTuning(dadfad);
+        }}
+      >
+        DADFAD Tuning
       </button>
 
     </div>
@@ -171,6 +196,8 @@ const TuningContols = ({ tuning, setTuning }) => {
 };
 
 /**
+ * DisplayGuitarStrings
+ * 
  * purpose - create tunable string row using state
  *
  * -  func: create row that can be edited. Takes (string number)
@@ -190,8 +217,8 @@ const DisplayGuitarStrings = ({ tuning, scale }) => {
   );
 };
 
-// const notes = ["C", "-", "D", "-", "E", "F", "-", "G", "-", "A", "-", "B"];
-const notes = ["1", "-", "2", "-", "3", "4", "-", "5", "-", "6", "-", "7"];
+const notes = ["C", "-", "D", "-", "E", "F", "-", "G", "-", "A", "-", "B"];
+// const notes = ["1", "-", "2", "-", "3", "4", "-", "5", "-", "6", "-", "7"];
 
 const scaleNotes = ["C", "D", "E", "F", "G", "A", "B"];
 const scaleNumbers = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 1];
@@ -203,12 +230,13 @@ const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
 const fretMarkers = "-|---|---|-o-|---|-o-|---|-o-|---|-o-|---|---|-%-";
 
 /**
+ * strString (note, scale)
+ * 
  * represent string
- * - omit scale notes
- * @param {midi number rep} note
  */
 const strString = (note, scale) => {
   ////////
+  
 
   //build string rep
   let rep = "";
