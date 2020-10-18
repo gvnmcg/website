@@ -33,3 +33,33 @@ Architecture:
                     needs: string tuning, key state
                     can  : --
 
+[refined]
+Architecture:
+
+==h==
+
+    App
+        needs: state
+
+            key controls
+                needs : scale
+                can do: [change scale]
+                style : [buttons], [input]
+
+            fretboard controls
+                needs: tuning
+                can do: changeTuning , reset to standard
+                style : [==h==]
+
+            fretboard display
+                needs: tuning
+                can do: [display strings],[omit strings]
+                style : [stings], [omit buttons]
+
+                GtrString Display
+                    needs: string tuning, key state
+                    can  : --
+
+
+<span style="color: #FFFF00">Marked text</span>
+<mark>Marked text</mark>

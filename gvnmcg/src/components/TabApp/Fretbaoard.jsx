@@ -19,18 +19,18 @@ import "./TabApp.css";
 
 // const standardTuning = [16, 23, 31, 38, 45, 52];
 
-const scaleNotes = [0, 1, 2, 3, 4, 5];
+// const scaleNotes = [0, 1, 2, 3, 4, 5];
 
-const initState = {
-  tuning: [16, 23, 31, 38, 45, 52],
-  strs: [0, 1, 2, 3, 4, 5],
-  omit: [true, true, false, true, true, true],
-  songKey: {
-    useKey: true,
-    scale: [0, 2, 4, 5, 7, 9, 11],
-    omited: [true, true, false, true, true, true],
-  },
-};
+// const initState = {
+//   tuning: [16, 23, 31, 38, 45, 52],
+//   strs: [0, 1, 2, 3, 4, 5],
+//   omit: [true, true, false, true, true, true],
+//   songKey: {
+//     useKey: true,
+//     scale: [0, 2, 4, 5, 7, 9, 11],
+//     omited: [true, true, false, true, true, true],
+//   },
+// };
 
 // const stringState = {
 //   tuned: tuningState.tuning[2],
@@ -38,22 +38,21 @@ const initState = {
 //   omitted: tuningState.omit[2],
 // };
 
-const tuningState = {
-  tuning: [16, 23, 31, 38, 45, 52],
-  strs: [0, 1, 2, 3, 4, 5],
-  omit: [true, true, false, true, true, true],
-};
-const songKeyState = {
-  enabled: false,
-  useKey: true,
-  scale: [0, 2, 4, 5, 7, 9, 11],
-  omited: [true, true, false, true, true, true],
-};
-const bigState = {
-  tuning: tuningState,
-  songKey: songKeyState,
-};
+// const tuningState = {
+//   tuning: [16, 23, 31, 38, 45, 52],
+// };
+// const songKeyState = {
+//   scale: [0, 2, 4, 5, 7, 9, 11],
+// };
+// const bigState = {
+//   tuningState: tuningState,
+//   songKeyState: songKeyState,
+// };
 
+const fbState = {
+  tuning: [16, 23, 31, 38, 45, 52],
+  scale: [0, 2, 4, 5, 7, 9, 11],
+};
 // const iota = (n) => [...Array(n).keys()];
 
 /**
@@ -64,95 +63,40 @@ const bigState = {
  * ## Gonna need styling help
  */
 const FretboardApp = () => {
-  const [state, setState] = React.useState(bigState);
+  const [state, setState] = React.useState(fbState);
 
-  //ACTIONS
-  const enableKey = () => {
-    let ns = state;
-    ns.songKey.enabled = !state.songKey.enabled;
-    setState({
-      songKey: {
-        enabled: !state.songKey.enabled,
-        ...state.songKey,
-      },
-      tuningState,
-    });
-
-    console.log(state.songKey.enabled);
-  };
-  // const enableKey = () => {
-  //   let ns = state;
-  //   ns.songKey.useKey = !ns.songKey.useKey;
-  //   console.log(ns);
-  //   setState(ns);
-  //   console.log(state);
-  // };
-  const toggleScaleNote = (sclNote) => {
-    let ns = state;
-    ns.songKey.omited[sclNote] = !state.songKey.omited[sclNote];
-    setState(ns);
-    console.log(ns.songKey.omited);
+  const setScale = (newScale) => {
+    console.log("setScale(", newScale ,")")
+    setState({ ...state, scale: newScale });
   };
 
-  const setTuning = (newTuningState) => {
-    setState({
-      tuning: newTuningState,
-      ...state
-    })
-  }
-  const shiftScale = () => {};
-  const turnPeg = () => {};
-  const omitStr = () => {};
-
+  const setTuning = (newtuning) => {
+    setState({...state , tuning: newtuning });
   
-
-  // //adjust tuning
-  // const tune = (strN) => (turn) => {
-  //   let newTuning = state.tuning;
-  //   let tuneNote = newTuning[strN];
-  //   newTuning[strN] = tuneNote + turn;
-  //   setState({ ...state, tuning: newTuning });
-  // };
-
-  //adjust strings omitted
-  const flipOmit = (strN) => {
-    let newOmit = state.tuningState.omit;
-    newOmit[strN] = !newOmit[strN];
-    setState({ ...state, omit: newOmit });
   };
-
-  //render App
-  let keyConOn = state.songKey.enabled;
 
   return (
+    <div className="TabApp" style={{ padding: "30px" }}>
+      <KeyControls setScale={setScale} />
 
-    <div className="TabApp" style={{ padding: "30px",  }}>
-      <button onClick={enableKey}>enable?</button>
+      <TuningContols tuning={state.tuning} setTuning={setTuning} />
 
-      {keyConOn ? (
-        <KeyControls
-          toggleScaleNote={toggleScaleNote}
-          shiftScale={shiftScale}
-        />
-      ) : (
-        <p>nah</p>
-      )}
-
-      <Fretboard turnPeg={turnPeg} omitStr={omitStr} setTuning={setTuning} />
+      <DisplayGuitarStrings tuning={state.tuning} scale={state.scale} />
     </div>
-
   );
 };
 
-const KeyControls = ({ toggleScaleNote, shiftScale }) => {
+const KeyControls = ({ setScale }) => {
+  let inp = "";
+
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
-      {scaleNotes.map((n) => (
-        <div key={n}>
-          {n}
-          <button onClick={() => toggleScaleNote(n)}>{n}</button>
-        </div>
-      ))}
+    <div>
+      <input
+        onChange={(e) => {
+          inp = e.target.innerText;
+        }}
+      ></input>
+      <button onClick={() => setScale(inp)}></button>
     </div>
   );
 };
@@ -160,25 +104,33 @@ const KeyControls = ({ toggleScaleNote, shiftScale }) => {
 /**
  * purpose - create set of strings.
  */
-const Fretboard = ({ turnPeg, omitStr ,setTuning}) => {
-  const [state, setState] = React.useState(tuningState)
+const TuningContols = ({ tuning, setTuning }) => {
 
 
-  
-  //adjust tuning
-  const tune = (strN) => (turn) => {
-    let newTuning = state.tuning;
-    let tuneNote = newTuning[strN];
-    newTuning[strN] = tuneNote + turn;
-    setTuning(state);
-    console.log("newS")
+
+  const onAnyChange = (strNum, turnDir) => {
+    let newTuning = tuning;
+    newTuning[strNum] = newTuning[strNum] + turnDir;
+    setTuning(newTuning);
   };
 
   return (
-    <div>
-      {initState.strs.map((n) => (
-        <DisplayGuitarString key={n} strN={n} />
-      ))}
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <button
+        onClick={() => {
+          setTuning([16, 23, 31, 38, 45, 52]);
+        }}
+      >
+        Std Tuning
+      </button>
+
+      {tuning.map((t, n) => (
+          <div key={n}>
+            <button onClick={() => onAnyChange(n, 1)}>+</button>
+            <span>{t}</span>
+            <button onClick={() => onAnyChange(n, -1)}>-</button>
+          </div>
+        ))}
     </div>
   );
 };
@@ -192,37 +144,14 @@ const Fretboard = ({ turnPeg, omitStr ,setTuning}) => {
  * -  display representation
  *
  */
-const DisplayGuitarString = ({ strN }) => {
-  //tuning state
-  const [state, setState] = React.useState(tuningState);
-
-  let tuneNote = state.tuning[strN];
-
-  //adjust tuning
-  const tune = (turn) => {
-    let newTuning = state.tuning;
-    newTuning[strN] = tuneNote + turn;
-    setState({ ...state, tuning: newTuning });
-  };
-
-  //adjust strings omitted
-  const flipOmit = (strN) => {
-    let newOmit = state.omit;
-    newOmit[strN] = !newOmit[strN];
-    setState({ ...state, omit: newOmit });
-  };
-
-  let omitted = state.omit[strN];
-  //render row
-  //uses: strN, tune, flipOmit, ommited
+const DisplayGuitarStrings = ({ tuning , scale}) => {
+  
   return (
-    <div key={strN}>
-      {/* tuning control */}
-      <button onClick={() => flipOmit(strN)}>{omitted ? "O" : "X"}</button>
-      <button onClick={() => tune(1)}>+</button>
-      <button onClick={() => tune(-1)}>-</button>
-      {/* string rep */}
-      <span>{omitted ? strString(tuneNote) : blankString}</span>
+    <div>
+      {fre}
+      {tuning.map((t, n) => (
+        <div key={n}>{strString(tuning[n], scale)}</div>
+      ))}
     </div>
   );
 };
@@ -230,16 +159,20 @@ const DisplayGuitarString = ({ strN }) => {
 // const notes = ["C", "-", "D", "-", "E", "F", "-", "G", "-", "A", "-", "B"];
 const notes = ["1", "-", "2", "-", "3", "4", "-", "5", "-", "6", "-", "7"];
 
-// const notestring = "-|-C-|---|-D-|---|-E-|-F-|---|-G-|---|-A-|---|-B-";
-const notestring =  "-|-1-|---|-2-|---|-3-|-4-|---|-5-|---|-6-|---|-7-";
-const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|--";
+// const scaleNotes = ["C", "D", "E", "F", "G", "A", "B"];
+const scaleNumbers = [0, 0, 1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7 ]
+
+// const notestring  = "-|-C-|---|-D-|---|-E-|-F-|---|-G-|---|-A-|---|-B-";
+// const notestring  = "-|-1-|---|-2-|---|-3-|-4-|---|-5-|---|-6-|---|-7-";
+// const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
+const fretMarkers = "-|---|---|-o-|---|-o-|---|-o-|---|-o-|---|---|-%-";
 
 /**
  * represent string
  * - omit scale notes
  * @param {midi number rep} note
  */
-const strString = (note) => {
+const strString = (note, scale) => {
   let rep = "";
 
   for (let i = 0; i < 12; i++) {
