@@ -225,7 +225,7 @@ const scaleNumbers = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 1];
 // const notestring  = "-|-1-|---|-2-|---|-3-|-4-|---|-5-|---|-6-|---|-7-";
 
 // const blankString = "-|---|---|---|---|---|---|---|---|---|---|---|---";
-const fretMarkers = "-|---|---|-o-|---|-o-|---|-o-|---|-o-|---|---|-%-";
+const fretMarkers = "-|---|___|___|_3_|___|_5_|___|_7_|___|_9_|___|___|-%-";
 
 /**
  * strString (note, scale)
@@ -239,7 +239,7 @@ const strString = (note, scale) => {
   //build string rep
   let rep = "";
   
-  for (let i = 0; i < 12; i++) {  
+  for (let i = 0; i < 13; i++) {  
     rep += "-|-";
 
     let fromOpen = (note + i) % 12;
